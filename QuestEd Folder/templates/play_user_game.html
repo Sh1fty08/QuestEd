@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play User Game</title>
+    <style>
+    @font-face {
+        font-family: 'Pixel';
+        src: url('/static/Pixel.ttf');
+    }
+
+    @font-face {
+        font-family: 'Archivo';
+        src: url('/static/Archivo.ttf');
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-image: url('/static/loginpage.gif');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        height: 100vh;
+        text-align: center;
+    }
+
+    h1 {
+        font-family: 'Pixel', sans-serif;
+        font-size: 40px;
+        color:  lightblue;
+        
+    }
+
+    h2 {
+        font-family: 'Pixel', sans-serif;
+        font-size: 30px;
+        color: white;
+    }
+
+    p {
+        font-family: 'Archivo', sans-serif;
+        font-size: 18px;
+        color: white;
+    }
+
+    input[type="text"] {
+        margin-top: 10px;
+        padding: 10px;
+        font-family: 'Archivo', sans-serif;
+        font-size: 16px;
+        background-color:   black;
+        color: white;
+    }
+    input[type="text"]::placeholder {
+        color: white;
+    }
+
+    input[type="text"]:hover {
+        background-color: #555;
+    }
+
+    input[type="submit"] {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-family: 'Archivo', sans-serif;
+        font-size: 16px;
+        color: white;
+        background-color: rgb(214, 50, 214);
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #555;
+    }
+
+    input[type="submit"]:focus {
+    outline: none;
+    }
+
+    ::placeholder {
+        color: rgba(0, 0, 0, 0.3);
+    }
+
+    input[type="hidden"] {
+        display: none;
+    }
+     
+    </style>
+</head>
+<body>
+    <h1>{{ game_questions[counter-1]['username']}} Questionnaire</h1>
+        <h2>Question {{ counter }}:</h2>
+       <p>{{ game_questions[counter-1]['question'] }}?</p>
+
+        <form method="POST" action="{{ url_for('play_user_game') }}">
+            <input type="text" name="answers" placeholder="Your answer" required>
+            <input type="hidden" name="counter" value="{{ counter }}">
+            <input type="hidden" name="score" value="{{ score }}">
+            <input type="submit" value="Next Question">
+        </form>
+
+</body>
+</html>

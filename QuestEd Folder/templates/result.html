@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var audio = new Audio("/static/audio/arcade.mp3");
+            audio.play();
+        });
+        </script>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+</head>
+<style>
+    @font-face {
+      font-family: 'Pixel';
+      src: url('/static/Pixel.ttf');
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      background-image: url('/static/game.png');
+      background-size: cover;
+      background-position: center;
+      font-family: 'Pixel', sans-serif;
+    }
+    .button {
+            background-color: rgb(214, 50, 214);
+            font-size: 20px;
+            padding: 5px 20px; 
+            border: 1px solid purple;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            margin: 0; 
+            font-family: 'Pixel', sans-serif;
+            margin-top: 10px;
+        }
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <h1>Game Over</h1>
+    <h3>Your Score: {{ score }}</h3>
+    <a href="/game" class= "button">Play Again?</a>
+    <a href="/single"class= "button">Return?</a>
+</body>
+</html>

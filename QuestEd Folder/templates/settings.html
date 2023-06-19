@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+    <style>
+        @font-face {
+            font-family: 'Pixel';
+            src: url('/static/Pixel.ttf');
+        }
+
+        @font-face {
+            font-family: 'Archivo';
+            src: url('/static/Archivo.ttf');
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('/static/loginpage.gif');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Pixel', sans-serif;
+            font-size: 40px;
+            color: white;
+        }
+
+        h2 {
+            font-family: 'Pixel', sans-serif;
+            font-size: 20px;
+            color: white;
+        }
+
+        .question {
+            font-family: 'Pixel', sans-serif;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .question-container {
+            margin-top: 20px;
+            border: 2px solid white;
+            padding: 50px;
+            border-radius: 50px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        table {
+            font-family: 'Pixel', sans-serif;
+            color: white;
+            margin-top: 40px;
+            border-spacing: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            width: 150px;
+            font-size: 14px;
+            text-align: center;
+            color: black;
+            background-color: #e8e8e8;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            font-family: 'Pixel', sans-serif;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        .delete-btn {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 14px;
+            text-align: center;
+            color: black;
+            background-color: red;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            font-family: 'Pixel', sans-serif;
+        }
+
+        .delete-btn:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+      <h1>Settings</h1>
+      <h2>Your Questionnaire</h2>
+      {% if questions %}
+          <div class="question-container">
+              {% for question in questions %}
+                  <div class="question">
+                      <p>{{ question[2] }}</p>
+                      <form action="{{ url_for('delete_question', question_id=question[0]) }}" method="POST">
+                          <button type="submit" class="delete-btn">Delete</button>
+                      </form>
+                  </div>
+              {% endfor %}
+          </div>
+      {% else %}
+          <p>No questions found.</p>
+      {% endif %}
+      
+      <div class="button-container">
+          <a href="/about" class="button">About</a>
+          <button onclick="window.location.href='/home'" class="button">Back</button>
+      </div>
+  </div>
+</body>
+</html>

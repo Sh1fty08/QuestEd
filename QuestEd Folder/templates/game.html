@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var audio = new Audio("/static/audio/arcade.mp3");
+            audio.play();
+        });
+    </script>
+</head>
+
+<style>
+    @font-face {
+        font-family: 'Pixel';
+        src: url('/static/Pixel.ttf');
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        background-image: url('/static/game.png');
+        background-size: cover;
+        background-position: center;
+        font-family: 'Pixel', sans-serif;
+    }
+
+    h2.category {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+    }
+
+    h2.username {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    h2.score {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+
+    h2.timer {
+        position: absolute;
+        top: 10px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        margin-top: 20px;
+        padding: 10px;
+        width: 200px;
+        font-size: 14px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    input[type="submit"] {
+        margin-top: 20px;
+        padding: 10px 20px;
+        width: 150px;
+        font-size: 14px;
+        text-align: center;
+        color: black;
+        background-color: #e8e8e8;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        font-family: 'Pixel', sans-serif;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #555;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1>Question {{ counter }}:</h1>
+        <p>{{ question }}</p>
+        <form action="/game" method="POST">
+            <input type="text" name="answers" placeholder="Your answer">
+            <input type="hidden" name="score" value="{{ score }}">
+            <input type="hidden" name="counter" value="{{ counter }}">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <h2 class="username">Username: {{ session.username }}</h2>
+    <h2 class="timer">Remaining Time: <span id="remaining-time">{{ remaining_time }} seconds</span></h2>
+    <h2 class="category">Category: {{ category }}</h2>
+    <h2 class="score">Score: <span id="score">{{ score }}</span></h2>
+</body>
+<script>  
+  var remainingTime = "{{ remaining_time }}";
+  
+  function updateRemainingTime() {
+      document.getElementById("remaining-time").textContent = remainingTime + " seconds";
+      remainingTime--;
+
+      if (remainingTime < 0) {
+      } else {
+          
+          setTimeout(updateRemainingTime, 1000);
+      }
+  }
+
+ 
+  updateRemainingTime();
+</script>
+
+</html>

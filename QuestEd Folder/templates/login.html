@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage Design</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var audio = new Audio("/static/audio/arcade.mp3");
+            audio.play();
+        });
+        </script>
+    
+    <style>
+        body {
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.5) 70%), url(/static/loginpage.gif);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        @font-face {
+            font-family: 'Thintel';
+            src: url('/static/Thintel.ttf');
+        }
+
+        @font-face {
+            font-family: 'Pixel';
+            src: url('/static/Pixel.ttf');
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: rgba(255, 255, 255, 0.007);
+            padding: 0 20px; 
+        }
+
+        .logo {
+            text-align: center;
+            font-family: 'Thintel', sans-serif;
+            font-size: 200px;
+            letter-spacing: 30px;
+            text-transform: uppercase;
+            color: #fff;
+            align-items: center;
+            text-align: center;
+            text-shadow: 8px 0px 8px teal, -8px -0px 8px purple;
+            margin: 0;
+            padding: 0;
+            padding-left: 100px;
+            margin-bottom: 50px; 
+        }
+
+        .form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .button {
+            background-color: rgb(214, 50, 214);
+            font-size: 50px;
+            padding: 10px 30px; 
+            border: 4px solid purple;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            margin: 0; 
+            font-family: 'Pixel', sans-serif;
+        }
+        
+        .back {
+            font-size: 15px;
+            color: rgb(236, 20, 20);
+            margin: 0; 
+            font-family: 'Pixel', sans-serif;
+        }
+        
+        .back a{
+            text-decoration: none;
+            color: rgb(236, 20, 20);
+            font-family: 'Pixel', sans-serif;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px; 
+        }
+        
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">QuestED</h2>
+            </div>
+        </div> 
+        <div class="content">
+            <div class="wrapper">
+                <div class="form">
+                    <form action="/login" method="get">
+                        <input type="submit" value="LOG IN" class="button">
+                    </form>
+                    <br>
+                    <br>
+                    <p class="back">Don't have an account yet? <u><a href="/register1">Register here</a></u></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

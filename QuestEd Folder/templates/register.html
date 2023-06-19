@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var audio = new Audio("/static/audio/arcade.mp3");
+            audio.play();
+        });
+    </script>
+    <style>
+        body {
+            background: linear-gradient(to top, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.5) 70%), url(/static/loginpage.gif);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        @font-face {
+            font-family: 'Thintel';
+            src: url('/static/Thintel.ttf');
+        }
+
+        @font-face {
+            font-family: 'Pixel';
+            src: url('/static/Pixel.ttf');
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.027);
+        }
+
+        .navbar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 100px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-family: 'Thintel', sans-serif;
+            letter-spacing: 20px;
+            padding-left: 70px;
+            padding-top: 50px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form {
+            width: 300px;
+            padding-bottom: 300px;
+        }
+
+        .form h2 {
+            font-size: 30px;
+            color: #fff;
+            text-align: center;
+            align-items: center;
+            padding-left: 30px;
+            font-family: 'Thintel', sans-serif;
+            letter-spacing: 10px;
+            padding-bottom: 50px;
+        }
+
+        .form input[type="text"],
+        .form input[type="password"],
+        .form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-color: white;
+            border-radius: 5px;
+            padding-left: 30px;
+            background-color: transparent;
+            color: white;
+            font-family: 'Pixel', sans-serif;
+        }
+
+        .form input[name="username"] {
+            background-image: url(/static/Userlogo.png);
+            background-repeat: no-repeat;
+            background-position: 5px center;
+            background-size: 20px;
+        }
+
+        .form input[name="password"] {
+            background-image: url(/static/password.png);
+            background-repeat: no-repeat;
+            background-position: 5px center;
+            background-size: 20px;
+        }
+
+        .form input[name="email"] {
+            background-image: url(/static/email.png);
+            background-repeat: no-repeat;
+            background-position: 5px center;
+            background-size: 20px;
+        }
+
+        .form button[type="submit"],
+        .form button[type="button"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .form button[type="submit"]:hover,
+        .form button[type="button"]:hover {
+            background-color: #45a049;
+        }
+
+        .back {
+            color: #fff;
+            padding-left: 45px;
+        }
+
+        .back a {
+            color: #4CAF50;
+        }
+
+        .back a:hover {
+            color: #45a049;
+        }
+
+        button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">QuestED</h2>
+            </div>
+        </div>
+        <div class="content">
+            <div class="form">
+                <h2>Register</h2>
+                <form action="/register" method="POST">
+                    <input type="text" name="username" placeholder="Username" required><br>
+                    <input type="password" name="password" placeholder="Password" required><br>
+                    <input type="email" name="email" placeholder="Email" required><br>
+                    <button type="submit">Register</button>
+                </form>
+                <button type="button" onclick="window.location.href='/login'">Back</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
